@@ -2,8 +2,8 @@ import { Footer, Header, Main, Title } from "@/components/elements/layout"
 import "./reset.css"
 
 export const metadata = {
-  title: "Page title",
-  description: "Page description",
+  title: "Study docs for FFFFF Cafe",
+  description: "FFFFF Cafeの勉強会用ドキュメントです。",
 }
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
@@ -11,11 +11,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="ja">
       <body>
         <Header>
-          <Title>Page title</Title>
+          <Title>Study docs for FFFFF Cafe</Title>
         </Header>
         <Main>{children}</Main>
         <Footer>
-          <p>&copy; My organization</p>
+          <p>&copy; FFFFF Cafe</p>
         </Footer>
       </body>
     </html>
