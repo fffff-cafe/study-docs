@@ -64,48 +64,56 @@ const setupSteps: { title: string; text: string; terminal: ReactNode }[] = [
 const models = [
   {
     name: "Qwen 3.5 35B-A3B",
+    ollama: "ollama run qwen3.5:35b",
     text: "現在のMac向けローカルLLMでまず試したいモデル。35BのMoEモデルで、Coding Agentとの相性が良い。",
     tags: ["35B MoE", "Q4 約22GB", "32GB+", "Coding"],
     links: [["Hugging Face", "https://huggingface.co/Qwen/Qwen3.5-35B-A3B"]],
   },
   {
     name: "Gemma 4 31B",
+    ollama: "ollama run gemma4:31b",
     text: "高品質な汎用モデル。Coding、推論、文章生成など幅広く使える。",
     tags: ["31B", "Q4 約19GB", "32GB+", "汎用"],
     links: [["Hugging Face", "https://huggingface.co/google/gemma-4-31B-it"], ["GitHub", "https://github.com/google-deepmind/gemma"]],
   },
   {
     name: "Qwen 3.5 27B",
+    ollama: "ollama run qwen3.5:27b",
     text: "大きめのDenseモデル。MoEではなく、モデル全体を使うタイプ。",
     tags: ["27B", "Q4 約19GB", "32GB+", "Coding"],
     links: [["Hugging Face", "https://huggingface.co/Qwen/Qwen3.5-27B"]],
   },
   {
     name: "Gemma 4 26B-A4B",
+    ollama: "ollama run gemma4:26b",
     text: "26B規模のMoEモデル。メモリ容量と性能のバランスが良い。",
     tags: ["26B MoE", "Q4 約15GB", "24GB+"],
     links: [["Hugging Face", "https://huggingface.co/google/gemma-4-26B-A4B-it"], ["GitHub", "https://github.com/google-deepmind/gemma"]],
   },
   {
     name: "gpt-oss 20B",
+    ollama: "ollama run gpt-oss:20b",
     text: "推論やAgent用途を意識した比較的軽量なモデル。16〜24GBクラスのMacでも候補になる。",
     tags: ["20B MoE", "Q4 約12GB", "Agent"],
     links: [["Hugging Face", "https://huggingface.co/openai/gpt-oss-20b"], ["GitHub", "https://github.com/openai/gpt-oss"]],
   },
   {
     name: "Qwen 3.5 9B",
+    ollama: "ollama run qwen3.5:9b",
     text: "16GB Macで使いやすい軽量モデル。普段使いから軽いCodingまで対応。",
     tags: ["9B", "Q4 約7GB", "16GB+"],
     links: [["Hugging Face", "https://huggingface.co/Qwen/Qwen3.5-9B"]],
   },
   {
     name: "LFM2-24B-A2B",
+    ollama: "ollama run lfm2:24b",
     text: "Active Parametersが小さく、高速なローカル推論を狙えるMoEモデル。",
     tags: ["24B MoE", "Q4 約14GB", "高速"],
     links: [["Hugging Face", "https://huggingface.co/LiquidAI/LFM2-24B-A2B"], ["GitHub", "https://github.com/Liquid4All/cookbook"]],
   },
   {
     name: "Gemma 4 12B",
+    ollama: "ollama run gemma4:12b",
     text: "軽量な汎用モデル。チャットや要約などを気軽にローカルで試したい場合に。",
     tags: ["12B", "Q4 約8GB", "16GB+"],
     links: [["Hugging Face", "https://huggingface.co/google/gemma-4-12B-it"], ["GitHub", "https://github.com/google-deepmind/gemma"]],
@@ -733,6 +741,7 @@ const Page: FC = () => (
                   </span>
                 ))}
               </div>
+              <pre className="terminal">{m.ollama}</pre>
               <div className="model-links">
                 {m.links.map(([label, href]) => (
                   <a key={href} href={href} target="_blank" rel="noopener noreferrer">
